@@ -1,0 +1,48 @@
+# Build outputs
+build/
+out/
+bin/
+lib/
+
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+CMakeUserPresets.json
+
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj*
+*.vcproj*
+*.user
+*.filters
+*.log
+*.tlog
+*.pdb
+*.ilk
+
+
+# Ninja
+.ninja_*
+build.ninja
+
+# vcpkg
+vcpkg_installed/
+.vcpkg-root
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+
+# Debug / profiling
+*.prof
+*.trace
+*.tmp
+
+
+# Shaders (compiled only)
+*.spv
