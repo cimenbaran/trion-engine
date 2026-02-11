@@ -86,4 +86,38 @@ struct Mat4
         }
         return r;
     }
+
+    static Mat4 Perspective(float fovYRadians, float aspect, float zNear, float zFar)
+    {
+        // OpenGL clip space: z in [-1, 1]
+        Mat4 r{};
+        const float f = 1.0f / std::tan(fovYRadians * 0.5f);
+
+        r.m[0] = f / aspect;
+        r.m[5] = f;
+        r.m[10] = (zFar + zNear) / (zNear - zFar);
+        r.m[11] = -1.0f;
+        r.m[14] = (2.0f * zFar * zNear) / (zNear - zFar);
+        return r;
+    }
+
+    static Mat4 LookAt(const Vec3& eye, const Vec3& target, const Vec3& up)
+    {
+        
+        Vec3 f = Normalize(target - eye);
+        Vec3 s = Normalize(Cross(f, up));
+        Vec3 u = Cross(s, f);
+
+        Mat4 r = Identity();
+
+        r.m[0] = s.x; r.m[4] = s.y; r.m[8] = s.z;
+        r.m[1] = u.x; r.m[5] = u.y; r.m[9] = u.z;
+        r.m[2] = -f.x; r.m[6] = -f.y; r.m[10] = -f.z;
+
+        r.m[12] = -Dot(s, eye);
+        r.m[13] = -Dot(u, eye);
+        r.m[14] = Dot(f, eye);
+
+        return r;
+    }
 };

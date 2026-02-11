@@ -56,7 +56,7 @@ T* GameObject::GetComponent() const
 {
 	for (auto& c : m_components)
 	{
-		if (auto& casted = dynamic_cast<T*>(c.get()))
+		if (auto* casted = dynamic_cast<T*>(c.get()))
 			return casted;
 	}
 

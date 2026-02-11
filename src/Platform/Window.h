@@ -20,6 +20,7 @@ public:
 
 	GLFWwindow* GetNativeHandle() const { return m_window; };
 
+	static Window* Main();
 private:
 	void InitGLFW();
 	void InitGLAD();
@@ -29,4 +30,6 @@ private:
 	GLFWwindow* m_window = nullptr;
 	int m_width = 0;
 	int m_height = 0;
+
+	static Window* s_main;
 };

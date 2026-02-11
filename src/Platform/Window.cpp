@@ -4,12 +4,15 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+Window* Window::s_main = nullptr;
+
 Window::Window(int width, int height, const std::string& title)
 	: m_width(width), m_height(height)
 {
 	InitGLFW();
 
 	m_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+	s_main = this;
 
 	if (!m_window)
 	{
@@ -32,12 +35,18 @@ Window::Window(int width, int height, const std::string& title)
 
 Window::~Window()
 {
+	if (s_main == this) s_main = nullptr;
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }
 
 
-void Window::InitGLFW() 
+Window* Window::Main()
+{
+	return s_main;
+}
+
+void Window::InitGLFW()
 {
 	if (!glfwInit())
 	{
