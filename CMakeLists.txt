@@ -21,7 +21,7 @@ add_executable(trion_engine
     ${ENGINE_H}  # headers are optional for build, but great for VS filters
 )
 
-# So you can do: #include "Core/Application.h"
+# Easy include
 target_include_directories(trion_engine PRIVATE
     "${CMAKE_SOURCE_DIR}/src"
 )
