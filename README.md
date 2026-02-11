@@ -2,7 +2,7 @@
 
 Trion Engine is a small, experimental C++ / OpenGL engine built to understand and implement core rendering and engine architecture concepts from scratch.
 
-![Trion Engine](https://raw.githubusercontent.com/cimenbaran/trion-engine/refs/heads/main/Trion-engine.png))
+![Trion Engine](https://raw.githubusercontent.com/cimenbaran/trion-engine/refs/heads/main/Trion-engine.png)
 
 ---
 
