@@ -16,7 +16,7 @@ Window::Window(int width, int height, const std::string& title)
 
 	if (!m_window)
 	{
-		std::cerr << "Failed to create GLFW window" << std::endl;
+		std::cerr << "Failed to create GLFW window\n";
 		glfwTerminate();
 
 		std::exit(EXIT_FAILURE);
@@ -50,7 +50,7 @@ void Window::InitGLFW()
 {
 	if (!glfwInit())
 	{
-		std::cerr << "Failed to initialize GLFW" << std::endl;
+		std::cerr << "Failed to initialize GLFW\n";
 		std::exit(EXIT_FAILURE);
 	}
 
@@ -63,7 +63,7 @@ void Window::InitGLAD()
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		std::cerr << "Failed to initialize GLAD" << std::endl;
+		std::cerr << "Failed to initialize GLAD\n";
 		std::exit(EXIT_FAILURE);
 	}
 }

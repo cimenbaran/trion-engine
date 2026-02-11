@@ -4,6 +4,7 @@
 #include "Components/Transform.h"
 #include "Components/FPSCounter.h"
 #include "Components/Camera.h"
+#include "Rendering/RenderContext.h"
 #include "Scene/BootScene.h"
 #include "Core/Time.h"
 #include "Platform/Window.h"
@@ -56,6 +57,18 @@ void SceneManager::Render()
 {
 	if (!s_activeScene)
 		return;
+
+	Camera* cam = GetMainCamera();
+	if (cam)
+	{
+		RenderContext::SetViewProjection(cam->GetViewMatrix(),
+			cam->GetProjectionMatrix());
+	}
+	else
+	{
+		RenderContext::SetViewProjection(Mat4::Identity(), Mat4::Identity());
+	}
+
 	s_activeScene->Render();
 }
 
@@ -93,7 +106,6 @@ Camera* SceneManager::GetMainCamera()
 		if (!firstCamera)
 			firstCamera = cam;
 
-		// Primary tercih
 		if (cam->isPrimary)
 			return cam;
 	}

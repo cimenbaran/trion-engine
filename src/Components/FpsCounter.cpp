@@ -9,7 +9,7 @@ void FPSCounter::Update()
 
 	if (m_timer >= 1.0f)
 	{
-		std::cout << "FPS: " << m_frames << std::endl;
+		std::cout << "FPS: " << m_frames << "\n";
 		m_frames = 0;
 		m_timer = 0.0f;
 	}
